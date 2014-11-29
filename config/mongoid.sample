@@ -1,0 +1,6 @@
+development:
+  sessions:
+    default:
+      database: table_guru
+      hosts:
+        - localhost:27017
