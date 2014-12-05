@@ -2,12 +2,11 @@ class TableGuru.Models.Guest extends Backbone.Model
 
   idAttribute: "_id"
 
-  #url: ->
-    #debugger
-    #if @id
-      #Routes.guest_path(@id)
-    #else
-      #Routes.guests_path()
+  url: ->
+    if @isNew()
+      Routes.guests_path()
+    else
+      Routes.guest_path(@id)
 
 class TableGuru.Collections.Guests extends Backbone.Collection
   model: TableGuru.Models.Guest
