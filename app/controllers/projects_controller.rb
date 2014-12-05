@@ -42,6 +42,12 @@ class ProjectsController < ApplicationController
     end
   end
 
+  def optimize
+    optimizer = Optimizer.new(self)
+    optimizer.optimize!
+    render json: optimizer
+  end
+
   private
   def set_project
     @project = Project.find(params[:id])
