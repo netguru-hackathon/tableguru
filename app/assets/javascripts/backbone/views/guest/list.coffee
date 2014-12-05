@@ -4,12 +4,11 @@ $ ->
 
     initialize: ->
       @guests = new TableGuru.Collections.Guests()
-      @guests.fetch()
-      @render()
+      @guests.fetch(success: @render)
 
     render: =>
-      for guest in @guests.models
+      _.each @guests.models, (m)=>
         $(@el).append('<div class="item">
-          <img src="' + guest.image_url + '"/>' + model.name + '</div>')
+          <img src="' + m.attributes.image_url + '"/>' + m.attributes.name + '</div>')
 
   guest_list = new TableGuru.Views.GuestList
