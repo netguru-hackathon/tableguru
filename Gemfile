@@ -17,6 +17,7 @@ gem 'js-routes'
 gem 'gon'
 gem 'bootstrap-sass'
 gem 'nokogiri'
+gem 'active_model_serializers'
 
 group :test, :development do
   gem 'pry-rails'
