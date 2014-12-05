@@ -9,10 +9,18 @@
 
 
   %body
-    .greeting
-      Hello,
-      = current_user.email
     %p.notice= notice
     %p.alert= alert
 
-    = yield
+    - if current_user
+      .navbar.navbar-default
+        .container-fluid
+          .navbar-header
+            .greeting
+              Hello,
+              = current_user.email
+            = link_to '#', 'TableGuru', class: 'navbar-brand'
+
+
+    .container
+      = yield
