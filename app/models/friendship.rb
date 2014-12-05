@@ -16,8 +16,4 @@ class Friendship
     Guest.find(guest2_id)
   end
 
-  def self.energy(g1, g2, strength, const)
-    strength * Math.exp(-g1.distance_to(g2) / const)
-  end
-
 end

@@ -7,25 +7,25 @@ class Optimizer
   end
 
   def optimize!
-    unless @project.chairs.count != @project.guests.count
-      initial_setups = (1..10).map do
-        s = Setup.new(project)
-        s.shuffle
-      end
+    raise "Zla liczba krzesel kurwa!" if @project.chairs.count != @project.guests.count
 
-      @setup = initial_setups.max_by(&:points)
+    initial_setups = (1..10).map do
+      s = Setup.new(project)
+      s.shuffle
+    end
 
-      return @setup #####
+    @setup = initial_setups.max_by(&:points)
 
-      100.times do
-        new_setup = @setup.small_shuffle
-        if new_setup.points >= setup.points
+    return @setup #####
+
+    100.times do
+      new_setup = @setup.small_shuffle
+      if new_setup.points >= setup.points
+        @setup = new_setup
+      else
+        prob = new_setup.points.to_f / @setup.points.to_f
+        if Math.rand < prob
           @setup = new_setup
-        else
-          prob = new_setup.points.to_f / @setup.points.to_f
-          if Math.rand < prob
-            @setup = new_setup
-          end
         end
       end
     end

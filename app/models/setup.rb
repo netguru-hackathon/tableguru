@@ -1,17 +1,18 @@
 class Setup
 
-  attr_accessor :guests, :chairs
+  attr_accessor :guests, :chairs, :connections
 
   def initialize(project)
     @friendships = project.friendships
-    @guests = project.guests.dup
-    @chairs = project.chairs.dup
-    @remaining_chairs = project.chairs
+    @guests = project.guests.to_a.dup
+    @chairs = project.chairs.to_a.dup
+    @remaining_chairs = project.chairs.to_a.dup
+    @connections = {}
   end
 
   def shuffle
     @guests.each do |guest|
-      guest.chair = grab_a_chair
+      connections[guest] = grab_a_chair
     end
     self
   end
@@ -19,18 +20,28 @@ class Setup
   def small_shuffle
   end
 
+  def find_guest(id)
+    @guests.select { |g| g.id == id }.first
+  end
+
   def points
     @friendships.sum do |f|
       id1, id2 = f.guest1_id, f.guest2_id
-      g1 = @guests.find { |g| g.id == id1 }
-      g2 = @guests.find { |g| g.id == id2 }
-      Friendship.energy(g1,g2,f.strength, f.const)
+      g1 = find_guest id1
+      g2 = find_guest id2
+      energy(g1,g2,f.strength, f.const)
     end
+  end
+
+  def energy(g1, g2, strength, const)
+    c1 = connections[g1]
+    c2 = connections[g2]
+    strength * Math.exp(-c1.distance_to(c2) / const)
   end
 
   def format
     guests.map do |guest|
-      [guest.name, guest.chair]
+      [guest.name, connections[guest]]
     end
   end
 
