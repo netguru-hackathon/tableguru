@@ -8,7 +8,7 @@ class Guest
   belongs_to :chair
   belongs_to :project
 
-  has_many :friendships
+  delegate :x, :y, :distance_to, to: :chair
 
-  delegate :x, :y, to: :chair
+  validates_presence_of :name
 end

@@ -4,4 +4,6 @@ class Chair
 
   belongs_to :table
   has_one :guest
+
+  validates_presence_of :x, :y
 end
