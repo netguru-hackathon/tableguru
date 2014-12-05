@@ -17,7 +17,7 @@ class ProjectsController < ApplicationController
   end
 
   def create
-    @project = Project.new(project_params)
+    @project = Project.new(project_params.merge(user: current_user))
     if @project.save
       redirect_to project_path(@project), notice: "Project created :)"
     else
@@ -43,10 +43,10 @@ class ProjectsController < ApplicationController
 
   private
   def set_project
-    @project = Project.find(params[:project_id])
+    @project = Project.find(params[:id])
   end
 
   def project_params
-    params.require(:project).permit(:title, :user_id)
+    params.require(:project).permit(:title)
   end
 end

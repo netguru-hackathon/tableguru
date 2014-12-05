@@ -1,4 +1,6 @@
 %h1 Projects
 - @projects.each do |project|
   = button_to "#{project.title}", project_path(project)
-= button_to "+", new_project_path
+= form_for(Project.new) do |f|
+  = f.text_field :title
+  = f.submit "+"
