@@ -5,7 +5,7 @@ module Positionable
     klass.field :y, type: Float
   end
 
-  def distance(object)
+  def distance_to(object)
     dx = x - object.x
     dy = y - object.y
     Math.sqrt(dx*dx + dy*dy)

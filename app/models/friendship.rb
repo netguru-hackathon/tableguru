@@ -4,11 +4,20 @@ class Friendship
   field :strength, type: Float
   field :const, type: Float, default: 1.0
 
-  belongs_to :guest1
-  belongs_to :guest2
+  field :guest1_id
+  field :guest2_id
+  belongs_to :project
 
-  def energy
-    strength * Math.exp(-guest1.distanceTo(guest2) / const)
+  def guest1
+    Guest.find(guest1_id)
+  end
+
+  def guest2
+    Guest.find(guest2_id)
+  end
+
+  def self.energy(g1, g2, strength)
+    strength * Math.exp(-g1.distance_to(g2) / const)
   end
 
 end
