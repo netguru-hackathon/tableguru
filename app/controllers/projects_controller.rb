@@ -2,7 +2,8 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:edit, :show, :update, :destroy]
 
   def index
-    @projects = Project.all
+    @user = current_user
+    @projects = @user.projects
   end
 
   def new
@@ -46,6 +47,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:title)
+    params.require(:project).permit(:title, :user_id)
   end
 end
