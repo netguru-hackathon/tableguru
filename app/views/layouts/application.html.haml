@@ -9,8 +9,10 @@
 
 
   %body
-    %p.notice= notice
-    %p.alert= alert
+    - if notice
+      %p.alert.alert-success= notice
+    - if alert
+      %p.alert.alert-danger= alert
 
     - if current_user
       .navbar.navbar-default
