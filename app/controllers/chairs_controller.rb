@@ -40,7 +40,7 @@ class ChairsController < ApplicationController
   private
 
   def chair_params
-    params.require(:chair).permit(:id)
+    params.require(:chair).permit(:x, :i)
   end
 
   def set_chair
