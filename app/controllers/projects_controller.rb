@@ -14,6 +14,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    render text: "", status: 400 unless params[:id]
     session[:project_id] = params[:id]
   end
 
