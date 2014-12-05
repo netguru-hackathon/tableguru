@@ -15,12 +15,13 @@
     - if current_user
       .navbar.navbar-default
         .container-fluid
-          .navbar-header
-            .greeting
+          %ul.nav.navbar-nav
+            %li= link_to 'TableGuru', '#', class: 'navbar-brand'
+            %li= link_to 'My Projects', projects_path
+            %li.greeting
               Hello,
               = current_user.email
-            = link_to '#', 'TableGuru', class: 'navbar-brand'
-
+            %li= link_to 'Sign out', destroy_user_session_path
 
     .container
       = yield
