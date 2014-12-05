@@ -1,6 +1,5 @@
 class Project
-  include Mongoid:Document
-
+  include Mongoid::Document
   field :title
 
   belongs_to :user

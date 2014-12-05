@@ -2,7 +2,7 @@ class ProjectsController < ApplicationController
   before_action :set_project, only: [:edit, :show, :update, :destroy]
 
   def index
-    @projects =  Project.all
+    @projects = Project.all
   end
 
   def new
@@ -42,7 +42,7 @@ class ProjectsController < ApplicationController
 
   private
   def set_project
-    @project = Project.find(prams[:project_id])
+    @project = Project.find(params[:project_id])
   end
 
   def project_params
