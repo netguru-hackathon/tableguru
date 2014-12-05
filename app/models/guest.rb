@@ -6,6 +6,7 @@ class Guest
 
   belongs_to :group
   belongs_to :chair
+  belongs_to :project
 
   has_many :friendships
 
