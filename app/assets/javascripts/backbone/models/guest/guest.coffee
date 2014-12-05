@@ -1,7 +1,5 @@
 class TableGuru.Models.Guest extends Backbone.Model
 
-  idAttribute: "_id"
-
   url: ->
     if @isNew()
       Routes.guests_path()

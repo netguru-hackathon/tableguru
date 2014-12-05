@@ -6,4 +6,8 @@ class ApplicationController < ActionController::Base
   def current_project
     Project.find(session[:project_id])
   end
+
+  def default_serializer_options
+    {root: false}
+  end
 end
