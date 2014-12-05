@@ -8,7 +8,7 @@ class GuestsController < ApplicationController
     if @guest.save
       render json: @guest
     else
-      render({error: 'create failed'}.to_json, status: 400)
+      render text: "error: #{@guest.errors.full_messages}", status: 400
     end
   end
 
@@ -16,7 +16,7 @@ class GuestsController < ApplicationController
     if @guest.update_attributes(guest_params)
       render json: @guest
     else
-      render({error: 'update failed'}.to_json, status: 400)
+      render text: "error: #{@guest.errors.full_messages}", status: 400
     end
   end
 
@@ -33,9 +33,8 @@ class GuestsController < ApplicationController
     if @guest.destroy()
       render({destroyed: true}.to_json)
     else
-      render({error: 'save failed'}.to_json, status: 400)
+      render text: "error: #{@guest.errors.full_messages}", status: 400
     end
-
   end
 
   private
