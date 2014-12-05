@@ -1,0 +1,18 @@
+!!!HTML
+%html
+  %head
+    %title TableGuru
+    = stylesheet_link_tag    "application", media: "all", "data-turbolinks-track" => true
+    = javascript_include_tag "application", "data-turbolinks-track" => true
+    = javascript_include_tag "//cdnjs.cloudflare.com/ajax/libs/kineticjs/5.0.6/kinetic.min.js"
+    = csrf_meta_tags
+
+
+  %body
+    .greeting
+      Hello,
+      = current_user.email
+    %p.notice= notice
+    %p.alert= alert
+
+    = yield
