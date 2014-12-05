@@ -1,4 +1,4 @@
-class TableController < ApplicationController
+class TablesController < ApplicationController
 
   before_action :set_table, only: [:update, :show, :destroy]
   respond_to :json
