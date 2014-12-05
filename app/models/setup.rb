@@ -24,7 +24,13 @@ class Setup
       id1, id2 = f.guest1_id, f.guest2_id
       g1 = @guests.find { |g| g.id == id1 }
       g2 = @guests.find { |g| g.id == id2 }
-      Friendship.energy(g1,g2,f.strength)
+      Friendship.energy(g1,g2,f.strength, f.const)
+    end
+  end
+
+  def format
+    guests.map do |guest|
+      [guest.name, guest.chair]
     end
   end
 
