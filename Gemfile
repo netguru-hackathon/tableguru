@@ -24,6 +24,7 @@ gem 'devise'
 gem 'backbone-rails'
 gem 'js-routes'
 gem 'gon'
+gem 'bootstrap-sass'
 
 group :test, :development do
   gem 'pry-rails'
