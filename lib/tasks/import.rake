@@ -11,7 +11,7 @@ namespace :import do
         first_name = folk.css('span').first.text.strip
         last_name = %w(Nowak Garstka).sample
         img_src = folk.css('img').first.attr('src')
-
+        Guest.create(name: first_name, image_url: img_src)
         csv << [first_name, last_name, img_src]
       end
     end

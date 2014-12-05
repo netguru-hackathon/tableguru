@@ -1,1 +1,15 @@
-%h1 Project "#{@project.title}"
+.col-md-8
+  .top-row
+    %h3= @project.title
+  .canvas
+    Canvas
+
+.col-md-4
+  -#= text_field_tag :first_name, '', placeholder: 'First Name'
+  -#= text_field_tag :last_name, '', placeholder: 'Last Name'
+  -#J= text_field_tag :image, '', placeholder: 'Image'
+  -#= button_tag 'Add'
+  #guest_list
+    .item
+      = image_tag('https://netguruco-production.s3.amazonaws.com/uploads/1411735258-artur_on.jpg')
+      Artur Cygan
