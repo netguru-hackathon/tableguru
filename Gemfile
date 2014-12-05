@@ -21,7 +21,7 @@ gem 'turbolinks'
 
 gem 'haml-rails'
 gem 'devise'
-gem 'rails-backbone'
+gem 'backbone-rails'
 gem 'js-routes'
 gem 'gon'
 
