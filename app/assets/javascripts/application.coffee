@@ -1,7 +1,6 @@
 #= require jquery
 #= require jquery_ujs
 #= require bootstrap-sprockets
-#= require turbolinks
 #= require js-routes
 #= require_self
 #= require underscore
