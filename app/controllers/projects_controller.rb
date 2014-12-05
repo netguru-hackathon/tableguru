@@ -14,6 +14,7 @@ class ProjectsController < ApplicationController
   end
 
   def show
+    session[:project_id] = params[:id]
   end
 
   def create
