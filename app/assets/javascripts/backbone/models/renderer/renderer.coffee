@@ -3,8 +3,8 @@ class TableGuru.Renderer extends Backbone.Model
   initialize: ->
     stage = new Kinetic.Stage(
       container: "container"
-      width: 578
-      height: 363
+      width: 800
+      height: 400
     )
     layer = new Kinetic.Layer()
     n = 0
