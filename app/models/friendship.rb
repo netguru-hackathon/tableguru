@@ -16,4 +16,5 @@ class Friendship
     Guest.find(guest2_id)
   end
 
+  validates_presence_of :guest1, :guest2
 end

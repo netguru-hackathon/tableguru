@@ -9,7 +9,7 @@ class Optimizer
   def optimize!
     raise "Zla liczba krzesel kurwa!" if @project.chairs.count != @project.guests.count
 
-    initial_setups = (1..10).map do
+    initial_setups = (1..50).map do
       s = Setup.new(project)
       s.shuffle
     end
