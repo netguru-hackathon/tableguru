@@ -50,7 +50,7 @@ tango = (layer) ->
       rotation: Math.random() * 360
       radius: radius
       opacity: (radius - 20) / 100
-      easing: Kinetic.Easings.Linear
+      easing: Kinetic.Easings.EaseInOut
       fillRed: color.r
       fillGreen: color.g
       fillBlue: color.b
