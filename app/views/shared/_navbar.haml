@@ -1,0 +1,7 @@
+.navbar.navbar-default
+  .container-fluid
+    %ul.nav.navbar-nav
+      %li= link_to 'TableGuru', '#', class: 'navbar-brand'
+      %li= link_to 'My Projects', projects_path
+      %li= link_to "Hello, #{current_user.email}", edit_user_password_path
+      %li= link_to 'Sign out', destroy_user_session_path, method: :delete
