@@ -10,9 +10,13 @@
 
   %body
     - if notice
-      %p.alert.alert-success= notice
+      %p.alert.alert-success
+        %span= notice
+        %span.close.glyphicon.glyphicon-remove.right
     - if alert
-      %p.alert.alert-danger= alert
+      %p.alert.alert-danger
+        %span= alert
+        %span.close.glyphicon.glyphicon-remove.right
 
     - if current_user
       = render 'shared/navbar'
