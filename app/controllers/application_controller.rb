@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
     Project.find(session[:project_id])
   end
 
+  def after_sign_in_path_for(resource)
+    projects_path
+  end
+
   def default_serializer_options
     {root: false}
   end
