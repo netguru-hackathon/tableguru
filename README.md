@@ -1,45 +1,46 @@
 # TableGuru
 
-Calculate the best places for your guests to sit at.
+An app to calculate the best places for your guests to sit at during a wedding
+party, in an office, etc..
 
+*NOTE: This project is not complete*
 
-TableGuru
+## General flow
 
-Ogólny flow:
-- zdefiniuj geometrię pokoju (gdzie stoły, jakie duże itd.)
-- wczytaj listę ludzi
-- ustal relacje pomiędzy nimi (czy się lubią, czy nie)
-- zaznacz dostępne miejsca (krzesła) na planie pomieszczenia
-- poproś serwer o optymalizację
+- define room geometry (number and shape of tables, walls, etc)
+- upload list of guests
+- define relations (who likes/hates who)
+- mark available places (chairs)
+- ask server to optimize the setup (decide who sits where)
 
-Algorytm optymalizacji (wstępny pomysł):
-- ustawiamy ludzi losowo na kilkadziesiąt różnych sposobów
-- dla każdego ustawienia obliczamy punkty (“jakość” ustawienia)
-- wybieramy najbardziej optymalny układ (albo kilka układów)
-- w ramach każdego układu próbujemy (wiele razy) zamieniać ze sobą miejscami
-- losowe osoby i obliczamy nową “punktację” dla takiego układu 
-- po np. 1000 iteracjach wybieramy ustawienie, które ma najwięcej punktów i zwracamy do klienta jako JSON
+## Optimization algorithm
 
-Interfejs użytkownika:
-- ludzie jako kółka w odcieniach tęczy (kolejność as loaded)
-- opcjonalnie - avatary z załączonych obrazków (np. team ze strony NG)
-- potrzebny jakiś patent na łatwe dodawanie stołów, przeskalowywanie, wyrównywanie
-do siatki itp
-- UX: grupowanie ludzi - np. rodzina1, rodzina2, małżeństwa - fajnie, jakby łatwo
-można było je zaznaczać (żeby “masowo” dodawać relacje lubienia się) 
+### Initial optimization
 
-Dodatkowe ficzery:
-- punkty mobilne (goście) vs punkty stabilne (okno, obiad, para młoda)
-- przeszkody w formie linii 2D - różne współczynniki osłabiania interakcji (ściany
-= 0.1 / przeszklone = 0.3 / ekrany dźwiękowe = 0.7)
+- generate 50 random starting setups
+- calculate the quality of each one (equivalent of generating a potential energy
+  landscape)
+- choose the best setup
 
-Scenariusze:
-- wesele
-- nowe biuro NG
-- (przyszłość: automatyczne ustawianie stołów w jadalni?)
+### [implemented partially] Further optimization
 
-Jak to można zaimplementować?
-odpychanie = `-A*exp(-d)`
-[ d = odleglosc miedzy wybranymi osobami ]
-przyciąganie = `A*exp(-d)` 
+- take the best setup and apply a series of smaller changes (e.g. exchanging
+  places of 2 people)
+- after each change, calculate the quality of the setup - if it's better, keep
+  it, otherwise only do so with a given probability
+- repeat last step 1000 (or more) times
+- return the final setup to the client as JSON
 
+### [not really implemented] User interface
+
+Done:
+- log in & create a project
+- upload display list of guests and display it on the right hand side
+- allow to upload avatars for the guests to distinguish them more easily
+
+To do:
+- guests as colorful circles with initials (if no image given)
+- drag-and-drop creation of tables and chairs
+- define groups of guests who like each other by default
+- mobile guests vs fixed-location objects (e.g. the bride & groom)
+- different interaction modifiers (walls, sitting at different tables etc.)
