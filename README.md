@@ -22,7 +22,7 @@ party, in an office, etc..
   landscape)
 - choose the best setup
 
-### [implemented partially] Further optimization
+### Further optimization [implemented partially]
 
 - take the best setup and apply a series of smaller changes (e.g. exchanging
   places of 2 people)
@@ -31,7 +31,7 @@ party, in an office, etc..
 - repeat last step 1000 (or more) times
 - return the final setup to the client as JSON
 
-### [not really implemented] User interface
+## User interface [not really implemented]
 
 Done:
 - log in & create a project
@@ -39,7 +39,8 @@ Done:
 - allow to upload avatars for the guests to distinguish them more easily
 
 To do:
-- guests as colorful circles with initials (if no image given)
+- show server response graphically (i.e. mark the preferred guests locations on the room map)
+- show guests as colorful circles with initials (if no image given)
 - drag-and-drop creation of tables and chairs
 - define groups of guests who like each other by default
 - mobile guests vs fixed-location objects (e.g. the bride & groom)
